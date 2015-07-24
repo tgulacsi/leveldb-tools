@@ -97,7 +97,6 @@ func main() {
 					}
 					log.Fatal(err)
 				}
-				log.Printf("lk=%d, lv=%d", lk, lv)
 				if cap(k) < lk {
 					k = make([]byte, lk*2)
 				}
@@ -115,6 +114,7 @@ func main() {
 				if !bytes.Equal(sep, v[:sepLen]) {
 					log.Fatal("awaited %q, got %q", sep, v)
 				}
+				v = v[:n]
 				if v[n-1] != '\n' {
 					log.Fatal("should end with EOL, got %q", v)
 				}
